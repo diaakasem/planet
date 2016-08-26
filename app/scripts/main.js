@@ -83,7 +83,8 @@
       .exponent(3)
       //.domain([2.5, 10])
       .domain(d3.extent(data, function(d) { return d.value;}))
-      .range([0.5, 15]);
+      // Increase 40 to increase the radius
+      .range([0.5, 40]);
     // And finally, a scale for mapping magnitudes to ping TTLs
     var ttls = d3.scale.pow()
       .exponent(3)

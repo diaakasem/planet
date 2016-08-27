@@ -94,7 +94,7 @@
 
 
     var updateDate = function() {
-      d3.select('#date').text(moment(currentTime).utc().format('MMM DD YYYY HH:mm UTC'));
+      d3.select('#date').text(moment(currentTime).utc().format('MMM YYYY'));
     };
 
     // A scale that maps a percentage of playback to a time
@@ -108,8 +108,9 @@
     // 12 minutes of real time maps to the entirety of the
     // timespan covered by the data.
     var realToData = d3.scale.linear()
-      // decrese or increase 10
-      .domain([0, 1000 * 30])
+      // decrese  to fasten
+      // increase to slow down
+      .domain([0, 1000 * 90])
       .range([0, end - start]);
 
     var paused = false;

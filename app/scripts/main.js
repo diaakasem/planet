@@ -79,12 +79,12 @@
       .range(['green', 'red']);
 
     // Also create a scale for mapping magnitudes to ping angle sizes
-    var angles = d3.scale.pow()
-      .exponent(3)
+    var angles = d3.scale.linear()
+      //.exponent(3)
       //.domain([2.5, 10])
       .domain(d3.extent(data, function(d) { return d.value;}))
       // Increase 40 to increase the radius
-      .range([0.5, 40]);
+      .range([0.5, 60]);
     // And finally, a scale for mapping magnitudes to ping TTLs
     var ttls = d3.scale.pow()
       .exponent(3)

@@ -19,7 +19,7 @@
     land:     { fill:   '#06304e' },
     borders:  { stroke: '#001320' }
   }));
-  planet.loadPlugin(planetaryjs.plugins.pings());
+  planet.loadPlugin(self.planetPlugins.pings());
   planet.loadPlugin(planetaryjs.plugins.zoom({
     scaleExtent: [50, 5000]
   }));
@@ -79,7 +79,7 @@
     var lastTick = new Date().getTime();
     var colors = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.value;}))
-      .range(['green', 'red']);
+      .range(['#32cd32', '#AA0114']);
     // Also create a scale for mapping values to ping angle sizes
     var angles = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.value;}))

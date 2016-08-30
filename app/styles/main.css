@@ -23,6 +23,9 @@ canvas {
   cursor: move;
 }
 
+.globe-container {
+  overflow: hidden;
+}
 #controls {
   position: absolute;
   width: 400px;

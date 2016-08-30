@@ -37,22 +37,22 @@
                          data-gs-width="4" data-gs-height="4">
         <div class="grid-stack-item-content">
           <canvas id='planetCanvas'></canvas>
+          <div id='controls'>
+            <div>
+              <input id='slider' type='range' min='0' max='100' step='0.1' value='0'>
+              <select id="data" name="data">
+                <option value="data/jsoncountries.json" selected>First Data Set</option>
+                <option value="data/jsoncountries2.json">Second Data Set</option>
+              </select>
+            </div>
+            <div>
+              <span id='date'>Loading...</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id='controls'>
-      <div>
-        <input id='slider' type='range' min='0' max='100' step='0.1' value='0'>
-        <select id="data" name="data">
-          <option value="data/jsoncountries.json" selected>First Data Set</option>
-          <option value="data/jsoncountries2.json">Second Data Set</option>
-        </select>
-      </div>
-      <div>
-        <span id='date'>Loading...</span>
-      </div>
-    </div>
 
 
     <!-- build:js scripts/vendor.js -->

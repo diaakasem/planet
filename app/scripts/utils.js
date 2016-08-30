@@ -32,6 +32,7 @@
   this.planetUtils.getWidthHeight = function (planet) {
     var element = planet.canvas;
     var parentNode = d3.select(element).node().parentNode;
+    // 70 px for the controls
     return {
       width: parentNode.offsetWidth,
       height: parentNode.offsetHeight
@@ -47,7 +48,7 @@
     globe.canvas.width = wh.width;
     globe.canvas.height = wh.height;
     var scale = Math.min(wh.width, wh.height) / 2;
-    globe.projection.scale(scale);
+    globe.projection.scale(scale * 0.65);
     globe.projection.translate([wh.width / 2, wh.height / 2]);
   }, 1000);
 

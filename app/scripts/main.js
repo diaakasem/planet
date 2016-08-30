@@ -27,7 +27,10 @@
   planet.loadPlugin(self.planetPlugins.pings());
 
   var element = d3.select(canvas).node().parentNode;
-  var scale = Math.min(element.offsetWidth, element.offsetHeight) / 2;
+  var parentNode = d3.select(element).node().parentNode;
+  var controls = d3.select(parentNode).select('#controls').node();
+  var height = element.offsetHeight - controls.offsetHeight;
+  var scale = Math.min(element.offsetWidth, height) / 2;
   planet.loadPlugin(planetaryjs.plugins.zoom({
     scaleExtent: [50, 5000],
     initialScale: scale

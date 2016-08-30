@@ -64,7 +64,7 @@
     function drawPing(planet, context, now, alive, ping) {
       var alpha = 1 - (alive / ping.options.ttl);
       var color = d3.rgb(ping.options.color);
-      color = "rgba(" + color.r + "," + color.g + "," + color.b + "," + alpha + ")";
+      color = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha + ')';
       context.strokeStyle = color;
       context.lineWidth = 2;
       var circle = d3.geo.circle().origin([ping.lng, ping.lat])

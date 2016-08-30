@@ -2,8 +2,14 @@
 'use strict';
 
 (function() {
+
+  var options = {
+    cell_height: 80,
+    vertical_margin: 10
+  };
+  $('.grid-stack').gridstack(options);
   var self = this,
-      canvas = document.getElementById('quakeCanvas'),
+      canvas = document.getElementById('planetCanvas'),
       // Create our Planetary.js planet and set some initial values;
       // we use several custom plugins, defined at the bottom of the file
       planet = planetaryjs.planet();
@@ -68,6 +74,11 @@
   }
   load();
   d3.select('select#data').on('change', load);
+  $('.grid-stack').on('resizestop', function (event, ui) {
+    if ($(event.target).hasClass('globe-container')) {
+      self.planetUtils.resize(planet);
+    }
+  })
 
   function onDataLoad(err, data) {
 

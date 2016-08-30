@@ -1,29 +1,37 @@
 body {
-  background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  background-color: rgb(0, 26, 34);
+  background: url('../images/sky.jpg');
+  color: white;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
+h1 {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
 }
 
-.hero-unit h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
+canvas {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  cursor: move;
 }
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+#controls {
+  position: absolute;
+  width: 400px;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -200px;
+  text-align: center;
+}
+
+input[type=range] {
+  width: 400px;
 }

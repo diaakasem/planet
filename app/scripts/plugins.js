@@ -28,12 +28,11 @@
     };
   };
 
-
   this.planetPlugins.pings = function(config) {
     var pings = [];
     config = config || {};
 
-    var addPing = function(lng, lat, options) {
+    function addPing(lng, lat, options) {
       options = options || {};
       options.color = options.color || config.color || 'white';
       options.angle = options.angle || config.angle || 5;
@@ -47,9 +46,9 @@
         ping.lat = lat;
       }
       pings.push(ping);
-    };
+    }
 
-    var drawPings = function(planet, context, now) {
+    function drawPings(planet, context, now) {
       var newPings = [];
       for (var i = 0; i < pings.length; i++) {
         var ping = pings[i];
@@ -60,9 +59,9 @@
         }
       }
       pings = newPings;
-    };
+    }
 
-    var drawPing = function(planet, context, now, alive, ping) {
+    function drawPing(planet, context, now, alive, ping) {
       var alpha = 1 - (alive / ping.options.ttl);
       var color = d3.rgb(ping.options.color);
       color = "rgba(" + color.r + "," + color.g + "," + color.b + "," + alpha + ")";
@@ -73,7 +72,7 @@
       context.beginPath();
       planet.path.context(context)(circle);
       context.stroke();
-    };
+    }
 
     return function (planet) {
       planet.plugins.pings = {
@@ -116,6 +115,5 @@
       });
     };
   };
-
 
 }).call(window);

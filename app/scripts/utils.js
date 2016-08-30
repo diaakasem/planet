@@ -42,14 +42,14 @@
    * Resizes the globe
    * @param globe The globe to be resized
    */
-  this.planetUtils.resize = function (globe) {
+  this.planetUtils.resize = _.throttle(function (globe) {
     var wh  = self.planetUtils.getWidthHeight(globe);
     globe.canvas.width = wh.width;
     globe.canvas.height = wh.height;
     var scale = Math.min(wh.width, wh.height) / 2;
     globe.projection.scale(scale);
     globe.projection.translate([wh.width / 2, wh.height / 2]);
-  };
+  }, 1000);
 
 
 }).call(window);

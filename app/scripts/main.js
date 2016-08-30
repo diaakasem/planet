@@ -3,7 +3,6 @@
 
 (function() {
   var self = this,
-      timer,
       canvas = document.getElementById('quakeCanvas'),
       // Create our Planetary.js planet and set some initial values;
       // we use several custom plugins, defined at the bottom of the file
@@ -20,9 +19,14 @@
     borders:  { stroke: '#001320' }
   }));
   planet.loadPlugin(self.planetPlugins.pings());
+
+  var element = d3.select(canvas).node().parentNode;
+  var scale = Math.min(element.offsetWidth, element.offsetHeight) / 2;
   planet.loadPlugin(planetaryjs.plugins.zoom({
-    scaleExtent: [50, 5000]
+    scaleExtent: [50, 5000],
+    initialScale: scale
   }));
+
   planet.loadPlugin(self.planetPlugins.autoScaleCenter({extraHeight: -120}));
   function onClick(planet) {
     if (visualPause) {
@@ -60,7 +64,6 @@
   // The data is ordered, with the earliest data being the first in the file.
   function load() {
     var selectValue = d3.select('select#data').property('value');
-    console.log("Loading : " + selectValue);
     d3.json(selectValue, onDataLoad);
   }
   load();
@@ -79,6 +82,7 @@
     var lastTick = new Date().getTime();
     var colors = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.value;}))
+      // Range from green to range
       .range(['#32cd32', '#AA0114']);
     // Also create a scale for mapping values to ping angle sizes
     var angles = d3.scale.linear()
@@ -127,7 +131,7 @@
     // time passed in our accelerated playback reel and find all
     // the earthquakes that happened in that timespan, adding
     // them to the globe with a color and angle relative to their values.
-    var timer = d3.timer(function() {
+    d3.timer(function() {
       var now = new Date().getTime();
       if (paused) {
         lastTick = now;

@@ -50,9 +50,13 @@
     onDragStart: function() {
       isDragged = false;
       this.plugins.autorotate.pause();
+      d3.event.sourceEvent.stopPropagation();
+      d3.event.sourceEvent.preventDefault();
     },
     onDrag: function() {
       isDragged = true;
+      d3.event.sourceEvent.stopPropagation();
+      d3.event.sourceEvent.preventDefault();
     },
     onDragEnd: function() {
       if (isDragged) {
@@ -62,6 +66,8 @@
       } else {
         onClick(this);
       }
+      d3.event.sourceEvent.stopPropagation();
+      d3.event.sourceEvent.preventDefault();
     }
   }));
   planet.loadPlugin(self.planetPlugins.autorotate(5));
